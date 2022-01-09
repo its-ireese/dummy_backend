@@ -53,7 +53,6 @@ export class ProfileComponent implements OnInit {
   currentUser: any;  
   errorMsg = "";
   
-
   constructor(private token: TokenStorageService, private userService: UserService) { }
 
   ngOnInit(): void {
