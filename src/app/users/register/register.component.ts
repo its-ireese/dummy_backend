@@ -49,20 +49,20 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  // public uploadImage(imageInput: any) {
-  //   const reader = new FileReader(); console.log(reader);
+  public uploadImage(imageInput: any) {
+    const reader = new FileReader(); console.log(reader);
 
-  //   console.log(imageInput.files[0]);
-  //   this.fileUploadService.onUpload(imageInput.files[0]).subscribe({
-  //     next: async (response) => {
+    console.log(imageInput.files[0]);
+    this.fileUploadService.onUpload(imageInput.target.files[0]).subscribe({
+      next: async (response) => {
 
-  //       this.form.userImage = response;       
-  //     },
-  //     error: err => {
-  //       console.log(err);
-  //     }
-  //   })
+        this.form.userImage = response;       
+      },
+      error: err => {
+        console.log(err);
+      }
+    })
 
-  // }
+  }
 
 }

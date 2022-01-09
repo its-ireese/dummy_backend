@@ -3,7 +3,7 @@
     <div class="panel-body inf-content">
         <div class="row">
             <div class="col-md-4">
-                <img alt="" style="width:400px;" title="" class="img-circle img-thumbnail isTooltip" src="currentUser.userImage" data-original-title="Usuario">
+                <img alt="Profile Image" style="width:400px;" title="" class="img-circle img-thumbnail isTooltip" src="currentUser.userImage" data-original-title="Usuario">
             </div>
             <br>
             <div class="col-md-6">
@@ -18,79 +18,168 @@
                             <td>
                                 <strong>
                                     <span class="glyphicon glyphicon-user  text-primary"></span>    
-                                    First Name: {{ first_name }}
-                                                
+                                    First Name:             
                                 </strong>
                             </td>
                             <td class="text-primary">
-                                {{mainUser.userFirstName}}    
+                                {{currentUser.userFirstName}}    
                             </td>
                         </tr>
                         <tr>        
                             <td>
                                 <strong>
                                     <span class="glyphicon glyphicon-cloud text-primary"></span>  
-                                    Last Name : {{ last_name }}                                                
+                                    Last Name:                                                
                                 </strong>
                             </td>
                             <td class="text-primary">
-                                {{mainUser.userLastName}}
+                                {{currentUser.userLastName}}
                             </td>
                         </tr>
-    
                         <tr>        
                             <td>
                                 <strong>
                                     <span class="glyphicon glyphicon-bookmark text-primary"></span> 
-                                    Username: {{ username }}                                                
+                                    Username:                                                
                                 </strong>
                             </td>
                             <td class="text-primary">
-                                {{mainUser.userName}} 
+                                {{currentUser.userName}} 
                             </td>
                         </tr>
                         <tr>        
                             <td>
                                 <strong>
                                     <span class="glyphicon glyphicon-envelope text-primary"></span> 
-                                    Email: {{ email }} 
+                                    Email:
                                 </strong>
                             </td>
                             <td class="text-primary">
-                                {{mainUser.userEmail}}
+                                {{currentUser.userEmail}}
                             </td>
                         </tr>     
                         <tr>        
                             <td>
                                 <strong>
                                     <span class="glyphicon glyphicon-envelope text-primary"></span> 
-                                    Address: {{ address }} 
+                                    Address:
                                 </strong>
                             </td>
                             <td class="text-primary">
-                                {{mainUser.userAddress}}
+                                {{currentUser.userAddress}}
                             </td>
                         </tr>  
                         <tr>        
                             <td>
                                 <strong>
                                     <span class="glyphicon glyphicon-envelope text-primary"></span> 
-                                    Contact: {{ contact }} 
+                                    Contact:
                                 </strong>
                             </td>
                             <td class="text-primary">
-                                {{mainUser.userContact}}
+                                {{currentUser.userContact}}
                             </td>
-                        </tr> 
-                                     
+                        </tr>     
                     </tbody>
                 </table>
                 </div>
             </div>
         </div>
     </div>
-    </div>  
+</div>  
+<div class="card mt-5">
+    <div>
+        <button 
+              type="submit" 
+              class="btn btn-primary mr-2"
+              (click)="toggleAdd()" 
+              >Edit Profile</button>
+      </div>
 
+ <div *ngIf="flag" > 
+     <!-- <div> -->
+      <form #updateForm="ngForm" class="form-inline tm-5" (submit)="updatedUser()">
+           <div id="myDIV" class="form-group">
+             <label for="user_id">User ID :</label>
+             <input type="text" 
+             class="form-control" 
+             id="user_id"  
+             name="user_id"
+             placeholder="{{currentUser.user_id}}" readonly
+              > 
+              <!-- [(ngModel)]="editUser.userId" -->
+              <!--   {{currentUser.user_id}} -->
+           </div>
+           <div class="form-group">
+                 <label for="first_name">First Name</label>
+                 <input type="text" 
+                         class="form-control" 
+                         id="first_name"  
+                         name="first_name"
+                         placeholder={{currentUser.first_name}}
+                         [(ngModel)]="editUser.userFirstName">
+           </div>
+           <div class="form-group">
+                 <label for="last_name">Last Name</label>
+                 <input type="text" 
+                         class="form-control" 
+                         id="last_name"  
+                         name="last_name"
+                         placeholder={{currentUser.last_name}}
+                         [(ngModel)]="editUser.userLastName">
+           </div>
+           <div class="form-group">
+                 <label for="email">Email</label>
+                 <input type="text" 
+                         class="form-control" 
+                         id="email"  
+                         name="email"
+                         placeholder={{currentUser.email}}
+                         [(ngModel)]="editUser.userEmail">
+           </div>
+           <div class="form-group">
+                 <label for="password">Password</label>
+                 <input type="text" 
+                 class="form-control" 
+                 id="password"  
+                 name="password"
+                 placeholder={{currentUser.password}}
+                 [(ngModel)]="editUser.userPassword"> 
+
+                  <!-- {{ editUser.password }} -->
+           </div> 
+           <div class="form-group">
+                 <label for="username">Username</label>
+                 <input type="text" 
+                         class="form-control" 
+                         id="username"  
+                         name="username"
+                         placeholder={{currentUser.username}}
+                         [(ngModel)]="editUser.userName">
+           </div>
+           <div class="form-group">
+                 <label for="address">Address</label>
+                 <input type="text" 
+                         class="form-control" 
+                         id="address"  
+                         name="address"
+                         placeholder={{currentUser.address}}
+                         [(ngModel)]="editUser.userAddress">
+           </div>
+           <div class="form-group">
+                    <label for="contact">Contact Number</label>
+                    <input type="text" 
+                            class="form-control" 
+                            id="contact"  
+                            name="contact"
+                            placeholder={{currentUser.contact}}
+                            [(ngModel)]="editUser.userContact">
+           </div>
+           <button
+           type="submit" 
+           class="btn btn-primary mb-2">Update</button>
+       </form>
+     </div>
 
     <!-- <div class="container" *ngIf="currentUser; else loggedOut">
     <header class="jumbotron">

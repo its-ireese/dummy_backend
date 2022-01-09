@@ -52,8 +52,8 @@ export class ProfileComponent implements OnInit {
   showAdmin = false;
   currentUser: any;  
   errorMsg = "";
+  flag: boolean = false;
   
-
   constructor(private token: TokenStorageService, private userService: UserService) { }
 
   ngOnInit(): void {
@@ -96,5 +96,40 @@ export class ProfileComponent implements OnInit {
   //     }
   //   );
   // }
+
+  toggleAdd(){
+    if(this.flag){
+      this.flag = false;
+    }else{
+      this.flag = true;
+    }
+  }
+
+  updatedUser(){
+    console.log(this.editUser)
+    this.userService.updateUserService(this.editUser).subscribe(
+      (response) => {
+        this.editUser = response;
+        this.currentUser = response;
+     // this.reloadPage();        
+      console.log(response);
+      },
+    (error)=> {
+        console.log(error);
+      }
+    );
+  }
+
+ /* reloadPage(): void{
+    window.location.reload();}*/
+
+
+    // myFunction() {
+    //   var x = document.getElementById("myDIV");
+    //   if (x.style.display === "none") {
+    //     x.style.display = "block";
+    //   } else {
+    //     x.style.display = "none";
+    //   }
 
 }
