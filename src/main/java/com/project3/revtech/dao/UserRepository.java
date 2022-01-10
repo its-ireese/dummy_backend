@@ -6,6 +6,8 @@ import com.project3.revtech.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 	Optional<User> findByUsername(String username);
+	
+	Optional<User> findById(int userId);
 
 	  Boolean existsByUsername(String username);
 
