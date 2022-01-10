@@ -64,7 +64,6 @@ export class LoginComponent implements OnInit {
     );
     this.router.navigate(['/product']);
 
-
   }
 
   reloadPage(): void {

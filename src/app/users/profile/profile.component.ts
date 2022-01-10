@@ -123,7 +123,6 @@ export class ProfileComponent implements OnInit {
 
   uploadUserImage(imageInput: any) {
     const reader = new FileReader(); console.log(reader);
-
     console.log(imageInput.target.files[0]);
     this.fileUploadService.onUpload(imageInput.target.files[0]).subscribe({
       next: async (response) => {
